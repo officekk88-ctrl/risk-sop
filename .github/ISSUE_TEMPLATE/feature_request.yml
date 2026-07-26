@@ -1,0 +1,46 @@
+name: 功能建议
+description: 提议新的能力或流程改进
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: checkboxes
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 我已搜索现有 Issue，未发现相同建议
+          required: true
+  - type: textarea
+    attributes:
+      label: 使用场景
+      description: 哪类用户在什么场景遇到了什么问题？
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 建议方案
+      description: 描述期望的用户流程和验收结果
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: 主要影响范围
+      options:
+        - 项目与选址
+        - 尽调与证据
+        - 风险与整改
+        - AI 与知识库
+        - 专家复核
+        - 报告与审计
+        - 权限与安全
+        - 部署与运维
+        - 文档与其他
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 数据、权限与人工审核影响
+      description: 是否改变正式数据、角色权限、审计链或 AI 人工确认门禁？
+  - type: textarea
+    attributes:
+      label: 备选方案
+      description: 已考虑过的替代方案或临时解决方法

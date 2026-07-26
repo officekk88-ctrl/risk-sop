@@ -1,0 +1,30 @@
+node_modules/
+.next/
+out/
+coverage/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+*.tsbuildinfo
+.data/
+backups/
+/项目文档/
+
+# Editors and operating systems
+.idea/
+.vscode/
+Thumbs.db
+
+# Python helper-script caches
+__pycache__/
+*.py[cod]
+
+# Local certificates, keys, and database snapshots
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3

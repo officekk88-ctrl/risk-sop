@@ -1,0 +1,5 @@
+import { redirect } from "next/navigation";
+import { AppShell } from "@/components/app-shell";
+import { getSession } from "@/lib/auth";
+import { listAuditLogs } from "@/lib/mvp-store";
+export default async function AuditPage(){const session=await getSession();if(!session)redirect("/login");if(session.role!=="ADMIN")redirect("/dashboard");const logs=await listAuditLogs({email:session.email,role:session.role});return <AppShell email={session.email}><header className="topbar"><div><p className="eyebrow">证据与审计</p><h1>全量操作日志</h1><p className="muted">删除、上传、授权、审批、AI 初审、风险确认、报告和配置变更均在此留痕。</p></div></header><section className="card table-card"><div className="data-list audit-list">{logs.map(log=><div className="data-row" key={log.id}><span className="item-code">{log.action}</span><div className="data-main"><strong>{log.entityType} · {log.entityId}</strong><span className="muted">项目 {log.projectId} · 操作人 {log.actorEmail}</span></div><time>{new Date(log.createdAt).toLocaleString("zh-CN")}</time></div>)}{!logs.length?<div className="empty-state">暂无审计日志</div>:null}</div></section></AppShell>}
