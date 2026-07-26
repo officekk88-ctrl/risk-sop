@@ -54,7 +54,7 @@
     "postcss": "8.5.23",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "read-excel-file": "^8.0.3",
+    "read-excel-file": "^9.3.4",
     "server-only": "0.0.1",
     "sharp": "0.35.0",
     "tesseract.js": "7.0.0",
