@@ -1,0 +1,79 @@
+{
+  "name": "pickleball-venue-risk-mvp",
+  "version": "0.1.0",
+  "description": "匹克球馆开馆尽调、风险管理与 AI 辅助决策系统",
+  "private": true,
+  "license": "MIT",
+  "author": "officekk88-ctrl",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/officekk88-ctrl/risk-sop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/officekk88-ctrl/risk-sop/issues"
+  },
+  "homepage": "https://github.com/officekk88-ctrl/risk-sop#readme",
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [
+    "pickleball",
+    "due-diligence",
+    "risk-management",
+    "nextjs",
+    "ai"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "npm run test:unit",
+    "test:unit": "node --conditions=react-server --import tsx --test tests/*.test.ts",
+    "test:security": "node --conditions=react-server --import tsx scripts/security-smoke.mjs",
+    "test:account": "node scripts/account-smoke.mjs",
+    "test:recovery": "node scripts/recovery-smoke.mjs",
+    "test:checklist-ai": "node --conditions=react-server --import tsx scripts/checklist-ai-live.mjs",
+    "test:checklist-upload": "node scripts/checklist-upload-smoke.mjs",
+    "test:user-admin": "node --conditions=react-server --import tsx scripts/user-admin-smoke.mjs",
+    "test:quality": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
+    "test:release": "npm run test:quality && npm run test:account && npm run test:security && npm run test:recovery && npm audit --omit=dev --audit-level=high",
+    "env:check": "node scripts/validate-env.mjs",
+    "data:backup": "node scripts/backup-mvp.mjs",
+    "data:restore": "node scripts/restore-mvp.mjs",
+    "data:seed:simulations": "node --import tsx scripts/seed-simulation-projects.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.80",
+    "mammoth": "1.12.0",
+    "next": "16.2.11",
+    "openai": "6.48.0",
+    "pdfkit": "0.17.2",
+    "pg": "8.16.3",
+    "postcss": "8.5.23",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "read-excel-file": "^8.0.3",
+    "server-only": "0.0.1",
+    "sharp": "0.35.0",
+    "tesseract.js": "7.0.0",
+    "unpdf": "1.6.2",
+    "zod": "4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/pdfkit": "0.17.5",
+    "@types/pg": "8.15.6",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.2",
+    "eslint-config-next": "16.2.11",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "postcss": "8.5.23",
+    "sharp": "0.35.0"
+  }
+}
